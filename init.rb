@@ -6,5 +6,9 @@ Redmine::Plugin.register :redmine_activerecord_session_store do
   url 'https://github.com/pencil/redmine_activerecord_session_store'
   author_url 'http://nilscaspar.ch/'
 
-  RedmineApp::Application.config.session_store :active_record_store
+  session_params = {
+    key: '_redmine_session',
+    path: RedmineApp::Application.config.relative_url_root || '/'
+  }
+  RedmineApp::Application.config.session_store :active_record_store, session_params
 end
