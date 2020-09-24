@@ -1,4 +1,4 @@
-class AddSessionsTable < ActiveRecord::Migration
+class AddSessionsTable  < Rails.version < '5.1' ? ActiveRecord::Migration : ActiveRecord::Migration[4.2]
   def change
     unless table_exists?(:sessions)
       create_table :sessions do |t|
